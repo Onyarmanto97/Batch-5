@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About Us</title>
+    <style>
+        .navbar{
+            width: 100%;
+            height: 50px;
+            background-color: black;
+        }
+        .navbar-container{
+            display:flex;
+            align-items: center;
+            padding: 0 50px;
+            height: 100%;
+            color: white;
+            font-family: 'Playfair Display', serif;
+        }
+        .logo-container{
+            flex: 1;
+            
+        }
+        .logo{
+            font-family: 'PT Sans', sans-serif;
+            font-size: 30px;
+            color: red;
+        }
+        .menu-container{
+            flex: 6;
+            
+        }
+        .menu-list{
+            display: flex;
+            list-style: none;
+        }
+        .menu-list-item{
+            margin-right: 30px;
+        }
+        .menu-list-item.active{
+            font-weight: bold;
+        }
+        .profile-container{
+            flex: 2;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .profile-text-container{
+            margin: 0 20px;
+
+        }
+        .profile-picture{
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .toggle{
+            width: 40px;
+            height: 20px;
+            background-color: white;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            position: relative;
+        }
+        .toggle-icon{
+            color: goldenrod;
+        }
+        .toggle-ball{
+            width: 18px;
+            height: 18px;
+            background-color: black;
+            position: absolute;
+            right: 1px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 1s ease all;
+        }
+        .sidebar{
+            width: 50px;
+            height: 100%;
+            background-color: black;
+            position: fixed;
+            top: 0%;
+            display: flex;
+            flex-direction: column;
+            padding-top: 60px;
+        }
+        .left-menu-icon{
+            color: white;
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+
+        .container{
+            background-color: black;
+            min-height: calc(100vh - 50px);
+            color: white;
+        }
+
+        .content-container{
+            margin-left: 50px;
+        }
+        .featured-content{
+            height: 50vh;
+            padding: 50px;
+        }
+        .featured-title{
+            width: 200px;
+        }
+        .featured-desc{
+            width: 500px;
+            color: rgb(252, 252, 252);
+            margin: 50px 0;
+        }
+        .featured-button{
+            background-color: crimson;
+            color: white ;
+            padding: 10px 20px;
+            border-radius: 20px;
+            outline: none;
+            border: none;
+            font-weight: bold;
+        } 
+        .movie-list-container{
+            padding: 0 20px;
+        }
+        .movie-list-wrapper{
+            position: relative;
+            overflow: hidden;
+        }
+
+        .movie-list{
+            display: flex;
+            height: 300px;
+            align-items: center;
+            transform: translateX(0);
+            transition: all is ease-in-out;
+        }
+        .movie-list-item{
+            margin-right: 30px;
+            position: relative;
+            
+        }
+        .movie-list-item:hover .movie-list-item-img{
+            transform: scale(1.2);
+            margin: 0 30px;
+            opacity: 0.5;
+        }
+        .movie-list-item:hover .movie-list-item-title,
+        .movie-list-item:hover .movie-list-item-desc,
+        .movie-list-item:hover .movie-list-item-button{
+            opacity: 1;
+        }
+        .movie-list-item-img{
+            width: 270px;
+            height: 200px;
+            object-fit: cover;
+            transition: all is ease-in-out;
+            border-radius: 20px;
+        }
+        .movie-list-item-title{
+            background-color: #333;
+            padding: 0 10px;
+            font-size: 32px;
+            font-weight: bold;
+            position: absolute;
+            top: 10%;
+            left: 50px;
+            opacity: 0;
+            transition: is all ease-in-out;
+        }
+        .movie-list-item-desc{
+            background-color: #333;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            position: absolute;
+            top: 30%;
+            left: 50px;
+            width: 200px;
+            opacity: 0; 
+            transition: is all ease-in-out;
+        }
+        .movie-list-item-button{
+            padding: 10px;
+            background-color: chocolate;
+            color: white;
+            border-radius: 10px;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            bottom: 1px;
+            left: 50px;
+            opacity: 0;
+            transition: is all ease-in-out;
+        }
+        .about-us{
+            padding: 40px;
+            align-items: center;
+            left: 50%;
+        }
+        .about-us-container-item{
+            height: 100%;
+            padding-bottom: 50px;
+            
+        }
+        .arrow{
+            font-size: 120px;
+            position: absolute;
+            top: 90px;
+            right: 0;
+            color: lightgray;
+            opacity: .5;
+            cursor: pointer;
+        }
+        .container.active{
+            background-color: white;
+        }
+        .movie-list-title.active{
+            color: black;
+        }
+        .navbar.active{
+            background-color: white;
+        }
+        .navbar-container.active{
+            color: black;
+        }
+        .sidebar.active{
+            background-color: white;
+        }
+        .left-menu-icon.active{
+            color: black;
+        }
+        .toggle.active{
+            background-color: black;
+        }
+        .toggle-ball.active{
+            background-color: white;
+            transform: translateX(-20px);
+        }
+        @media only screen and (max-width: 940px){
+            .menu-container{
+                display: none;
+            }
+        }
+        .breadcrump-item{
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container"><h1 class="logo">Movone</h1></div>
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <a class="menu-list-item active" href="./index.html">Home</a>
+                    <a class="menu-list-item">Movie</a>
+                    <a class="menu-list-item">Series</a>
+                    <a class="menu-list-item">Popular</a>
+                    <a class="menu-list-item">Trends</a>
+                    <a class="menu-list-item" href="./aboutus.html" >About Us</a>
+                </ul>
+            </div>
+            <div class="profile-container">
+                <img class="profile-picture" src="./gambar/poster 1 snk.jpg" alt="">
+                <div class="profile-text-container">
+                    <span class="profile-text">Profile</span>
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+                <div class="toggle">
+                    <i class="fa-solid fa-moon toggle-icon"></i>
+                    <i class="fa-solid fa-sun toggle-icon"></i>
+                    <div class="toggle-ball"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <i class="left-menu-icon fa-solid fa-magnifying-glass" href="./index.html"></i>
+        <i class="left-menu-icon fa-solid fa-house"></i>
+        <i class="left-menu-icon fa-solid fa-users" href="./aboutus.html" ></i>
+        <i class="left-menu-icon fa-solid fa-bookmark"></i>
+        <i class="left-menu-icon fa-solid fa-tv"></i>
+        <i class="left-menu-icon fa-solid fa-hourglass"></i>
+        <i class="left-menu-icon fa-solid fa-cart-shopping"></i>
+    </div>
+    <nav  aria-label="breadcrumb">
+        <ol class="breadcrumb" style="display: flex;">
+          <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="./aboutus.html">About Us</a></li>
+        </ol>
+    </nav>
+    </div>
+
+    <div class="container">
+        <div class="content-container">
+            <h1 class="about-us">ABOUT US</h1>
+            <p class="about-us-container">Headquartered in Singapore, iQIYI International is an on-demand video streaming service providing beloved pan-Asian entertainment to international viewers. Offering both ad-supported and VIP subscription services, iQIYI International delivers premium drama series, movies, variety shows, and anime; with local languages and subtitles; powered by cutting-edge technology. iQIYI International also makes its technology available to other entertainment services through SaaS partnerships. iQIYI International can be enjoyed on any device via iQ.com
+            <img class="about-us-container-item" src="./gambar/random.jpg" alt="">
+            </p>
+        </div>
+        <div>
+            <footer> 
+                <label style="display: flex; padding-left: 50px;">Feed Back</label>
+                <textarea cols="30" rows="10"></textarea>
+                <button >Submit</button>
+            </footer>
+        </div>
+     
+</body>
+</html>
